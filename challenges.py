@@ -1,5 +1,3 @@
-### Reverse List in Place ###
-
 def rev_list_in_place(lst):
     """ Reverseses a list in place.
     Can not use reversed(), .reverse() or list slice
@@ -24,6 +22,26 @@ def rev_list_in_place(lst):
     # simple solution: 
     # for i in range(len(lst) / 2):
     #     lst[i], lst[-i - 1] = lst[-i -1], lst[i]
+
+def get_annas(words):
+    """ given a list of all words in the dictionary, output a data structure
+    that contains all words that share an annagram. 
+    (in coding challenge - key not provided - ie the sorted word string)
+
+    >>> words = ['meat', 'team']
+    >>> get_annas(words)
+    {'aemt': ['meat', 'team']}
+    
+    """
+    annas = {}
+    for word in words: 
+        key = ''.join(sorted(word))
+        if key not in annas: 
+            annas[key] = []
+        else:
+            annas[key].append(word)
+    return annas
+
 
 
 if __name__ == "__main__":
