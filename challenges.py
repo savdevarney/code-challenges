@@ -34,13 +34,34 @@ def get_annas(words):
     
     """
     annas = {}
-    for word in words: 
-        key = ''.join(sorted(word))
+    for word in words:
+        sorted_letters = sorted(word)
+        key = ''.join(sorted_letters)
         if key not in annas: 
-            annas[key] = []
+            annas[key] = [word]
         else:
             annas[key].append(word)
     return annas
+
+
+def remove_dups(lst):
+    """given a list of items, return a new list with duplicates removed
+
+    >>> remove_dups([1,1,1])
+    [1]
+
+    >>> remove_dups([1, 2, 1, 1, 3])
+    [1, 2, 3]
+    """
+
+    seen = set()
+    result = []
+    for i in lst:
+        if i not in seen:
+            seen.add(i)
+            result.append(i)
+    return result
+
 
 
 
