@@ -62,6 +62,43 @@ def remove_dups(lst):
             result.append(i)
     return result
 
+class Node(object):
+    """Class in a linked list."""
+
+    def __init__(self, data, next=None):
+        self.data = data
+        self.next = next
+
+    def as_string(self):
+        """Represent data for this node and it's successors as a string.
+
+        >>> Node(3).as_string()
+        '3'
+
+        >>> Node(3, Node(2, Node(1))).as_string()
+        '321'
+        """
+
+        out = []
+        n = self
+
+        while n:
+            out.append(str(n.data))
+            n = n.next
+
+        return "".join(out)
+
+def rem_node(node):
+    """ using Node class (no LL class), delete the first node or any node in
+    middle. It will not be used to delete the tail node"""
+
+    node.data = node.next.data
+    node.next = node.next.next
+
+
+
+
+
 
 
 
