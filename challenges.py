@@ -96,8 +96,29 @@ def rem_node(node):
     node.next = node.next.next
 
 
+def sum_rec(lst):
+    """ implement sum using recursion 
 
+    >>> sum_rec([5, 5])
+    10
 
+    >>> sum_rec([-5, 10, 4])
+    9
+
+    >>> sum_rec([20])
+    20
+    """
+
+    if not lst:
+        return 0
+    else:
+        if len(lst) == 1:
+            return lst[0]
+        else:
+            new_lst = lst[1:]
+            return lst[0] + sum_rec(new_lst)
+
+    # simplified: return lst[0] + sum_rec(lst[1:])
 
 
 
