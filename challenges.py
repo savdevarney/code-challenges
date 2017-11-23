@@ -121,6 +121,39 @@ def sum_rec(lst):
     # simplified: return lst[0] + sum_rec(lst[1:])
 
 
+def flatten_array(nested_array, n=1):
+    """ input: a 2D array, output: 1D array
+
+    >>> flatten_array([1,2,3, [4,5], 6, [7,8], 9])
+    [1,2,3,4,5,6,7,8,9]
+
+    >>> flatten_array([1,2,[3, [4,5]], 6, [7,8], 9])
+    [1,2,3,4,5,6,7,8,9]
+
+     """
+    print 'calling flatten_array with: '
+    print nested_array
+    flat_array = []
+
+    for n in nested_array:
+        if type(n) is list:
+            print 'identified a list: '
+            print n
+            flat_array.extend(flatten_array(n))
+
+        else:
+            print 'identified an item: '
+            print n
+            flat_array.append(n)
+
+    print 'returning: '
+    print flat_array
+    return flat_array
+
+
+
+
+
 
 
 if __name__ == "__main__":
