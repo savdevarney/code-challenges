@@ -234,5 +234,62 @@ spinWords( "This is another test" )=> returns "This is rehtona test"
 */
 
 
+/*
+
+COUNTING DUPLICATES
+
+
+*/
+
+function duplicateCount(text){
+  let chars = text.split('');
+  let lowerChars = chars.map((char) => (typeof char === 'string' ? char.toLowerCase() : char));
+  let counts = {}
+  let dups = 0;
+  for (let i = 0; i < lowerChars.length; i++) {
+    if (lowerChars[i] in counts) {
+      if (counts[lowerChars[i]] === 1) {
+        dups += 1;
+        counts[lowerChars[i]] += 1;
+        } else {
+        counts[lowerChars[i]] += 1;
+        }
+      } else {
+        counts[lowerChars[i]] = 1;
+        }
+    }
+  return dups; 
+}
+
+// alternative solutions: 
+
+function duplicateCount(text){
+  return (text.toLowerCase().split('').sort().join('').match(/([^])\1+/g) || []).length;
+}
+
+function duplicateCount(text){
+  return text.toLowerCase().split('').filter(function(val, i, arr){
+    return arr.indexOf(val) !== i && arr.lastIndexOf(val) === i;
+  }).length;
+}
+
+function duplicateCount(text){
+  var lower = text.toLowerCase();
+  var count = 0;
+  var used = [];
+  
+  lower.split('').forEach(function(letter) {
+    if (!used.includes(letter) && (lower.split(letter).length - 1) > 1) {
+      count++;
+      used.push(letter);
+    }
+  });
+  
+  return count;
+}
+
+
+
+
 
 
